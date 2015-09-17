@@ -4,17 +4,18 @@
 
 Un DTD (*Document Type Definition*) es un conjunto de reglas sintácticas para definir etiquetas. Nos indica qué etiquetas se pueden usar en un documento, en qué orden deben aparecer, cuáles pueden aparecer dentro de otras, cuáles tienen atributos, etc. Toda esta información se guarda en un archivo de texto con extensión `.dtd`.
 
-No es un documento de XML, por lo tanto no necesita prólogo, salvo en ciertos casos especiales.
+No es un documento XML y por lo tanto no necesita prólogo, salvo en ciertos casos especiales.
 
-Crear una definición del tipo de documento (DTD) es como crear nuestro propio lenguaje de marcado, para una aplicación específica. Pueden ser parte del documento XML, pero se suele colocar aparte para poder reutilizarlo.
+Crear una definición del tipo de documento (DTD) es como crear nuestro propio lenguaje de marcado para una aplicación específica. Pueden ser parte del documento XML, pero se suele colocar aparte para poder reutilizarlo.
 
 Puesto que XML es un sistema para definir lenguajes, quien necesite usar XML para intercambio de datos debe definir su propio DTD.
 
-Un problema que presentan los DTDs es que no siguen una sintaxis XML, sino una propia.
+Un problema que presentan los DTDs es que no siguen la sintaxis XML, sino una propia.
 
 ## Definición de elementos
 
 Los elementos permitidos se especifican con `ELEMENT`, seguido del nombre y el tipo de elemento:
+
 ```dtd
 <!ELEMENT nombre_elemento tipo_elemento>
 ```
@@ -22,20 +23,23 @@ Los elementos permitidos se especifican con `ELEMENT`, seguido del nombre y el t
 Los elementos que se pueden anidar dentro de otros se especifican entre paréntesis.
 
 Si van separados por comas exigen que sigan exactamente ese orden:
+
 ```dtd
 <!ELEMENT libro (titulo, autor, capitulo)>
 ```
 
 Según este ejemplo, `libro` debe contener un `titulo`, un `autor` y un `capitulo` exactamente y por ese orden.
 
-Si van separados por la barra vertical `|`, no exigen ese orden, podrán aparecer en cualquier orden.
+Si van separados por la barra vertical `|` no exigen ese orden, podrán aparecer en cualquier posición.
+
 ```dtd
 <!ELEMENT libro (titulo | autor | capitulo)>
 ```
 
 Según este ejemplo, `libro` debe contener o un `titulo`, o un `autor` o un `capitulo` y no en ese orden exactamente.
 
-Si lo que nosotros necesitamos es que siempre aparezca uno de cada pero en diferente orden. Pondríamos:
+Si lo que nosotros necesitamos es que siempre aparezca uno de cada pero en diferente orden, pondríamos:
+
 ```dtd
 <!ELEMENT libro (titulo | autor | capitulo)+ >
 ```
@@ -43,26 +47,31 @@ Si lo que nosotros necesitamos es que siempre aparezca uno de cada pero en difer
 Ahora con esta modificación si habrá por lo menos un elemento de cada y en orden aleatorio.
 
 Incluso podríamos especificar subelementos, por ejemplo:
+
 ```dtd
 <!ELEMENT libro (titulo, autor, (fotografia|dibujo), capitulo)+ >
 ```
 
-El tipo menos restrictivo es `ANY`. Al ser un elemento que permite cualquier contenido, no tiene estructura alguna. Lo mejor es evitar este tipo de elementos.  
+El tipo menos restrictivo es `ANY`. Al ser un elemento que permite cualquier contenido, no tiene estructura alguna. Lo mejor es evitar este tipo de elementos.
+
 ```dtd
 <!ELEMENT prueba ANY>
 ```
 
 Para datos de tipo texto, se usa `#PCDATA`. Este dato puede incluso a llegar a ser vacío. Pero no puede contener ni gráficos ni elementos multimedia.
+
 ```dtd
 <!ELEMENT prueba (#PCDATA)>
 ```
 
-Para elementos vacíos, `EMPTY`. No tiene contenido, solo podría tener información en sus atributos.  
+Para elementos vacíos, `EMPTY`. No tienen contenido, solo podrían tener información en sus atributos.  
+
 ```dtd
 <!ELEMENT img EMPTY>
 ```
 
 Pueden utilizarse en el documento XML con dos etiquetas:
+
 ```html
 <img src="logotipo.gif"></img>
 ```
@@ -73,6 +82,7 @@ O solo con una:
 ```
 
 Para opciones alternativas, separar con `|`. Por ejemplo:  
+
 ```dtd
 <!ELEMENT sexo (mujer | hombre)>
 <!ELEMENT parrafo (#PCDATA | lineas)>
@@ -83,22 +93,25 @@ Modificadores de número de ocurrencias:
 | Modificador       	| Significado |
 |:-----------------:|-------------|
 `()`	    | Los paréntesis sencillos agrupan subetiquetas, contienen valores de atributo y claves.
-`,`	      | Partícula y (AND). La coma indica la ordenación exacta de los elementos en el orden establecido.
-`|`	      | Partícula o (OR). La barra vertical significa que solamente se puede utilizar uno de los elementos propuestos.
-`?`	      | Una vez o ninguna. [0,1]
-`+`	      | Al menos una vez. [1..n]
-`*`	      | Cualquier número de veces o ninguna [0,n]
-(nada)  | Si aparece solo el nombre del elemento. Exactamente una vez.
+`,`	      | Partícula "y" (AND). La coma indica la ordenación exacta de los elementos en el orden establecido.
+`|`	      | Partícula "o" (OR). La barra vertical significa que solamente se puede utilizar uno de los elementos propuestos.
+`?`	      | Una vez o ninguna, `[0,1]`.
+`+`	      | Al menos una vez, `[1..n]`.
+`*`	      | Cualquier número de veces o ninguna, `[0,n]`.
+(nada)  | Si aparece solo el nombre del elemento, exactamente una vez.
 
 Ejemplo:
+
 ```dtd
 <!ELEMENT libro (titulo, autor+, capitulo+, apartados*, CD?)>
 ```
+
 Un `libro` deberá tener, un `titulo`, un `autor` como mínimo, un `capitulo` como mínimo, puede que haya o no `apartados` y por último si hay `CD` habrá uno solo.  
 
 ## Definición de atributos
 
 Los atributos permitidos para un elemento se especifican con `ATTLIST` y el nombre del elemento seguido de los nombres de los atributos, con un tipo y modificador obligatorios.
+
 ```dtd
 <!ATTLIST nombre_elemento nombre_atributo tipo_atributo modificador>
 ```
@@ -109,7 +122,7 @@ Los tipos de definiciones de atributos que podemos encontrarnos son:
 ```dtd
 <!ATTLIST libro ISBN CDATA #REQUIRED>
 ```
-En este ejemplo se define un atributo llamado ISBN para el elemento `libro`, siendo obligatorio este atributo.
+En este ejemplo se define un atributo llamado `ISBN` para el elemento `libro`, siendo obligatorio este atributo.
 
 -   Definición de un atributo de valores enumerados.
 ```dtd
@@ -125,7 +138,7 @@ En este ejemplo se define para el elemento Libro el atributo portada, que es obl
 >
 ```
 
-Tipos de datos que puede contener:
+Tipos de datos que puede contener un atributo:
 
 `CDATA`
 : Cualquier valor, o una enumeración de los valores permitidos.
@@ -209,7 +222,7 @@ Aquí tenemos las tres formas de especificar un DTD:
 <!DOCTYPE nodo_raiz PUBLIC "-//OASIS//DTD Libro XML//EN" "../dtds/cap.dtd">
 ```
 
-Es posible incrustar la DTD internamente en el documento XML:
+También es posible incrustar la DTD internamente en el documento XML:
 ```xml
 <?xml version="1.0"?>
 <!DOCTYPE capitulo
@@ -222,7 +235,7 @@ Es posible incrustar la DTD internamente en el documento XML:
   ...
 </capitulo>
 ```
-Incluso es posible tener una DTD interna y otra externa (prevalece la interna)
+Incluso es posible tener una DTD interna y otra externa (prevalece la interna).
 
 ## Entidades  
 
@@ -232,12 +245,14 @@ Las entidades son una especie de comodines que sirven para reutilizar informaci�
 
 Se utilizan cuando vamos a utilizar (una o varias veces) cierta información. En ese caso en vez de añadirla varias veces en el documento de XML, lo que hacemos es crear una entidad en el DTD, donde se le asigna a una especie de "constante" la información y después en el documento de xml, llamamos a dicha "constante" todas las veces que queramos.
 
-Lo primero que tenemos que hacer es poner en el DTD:
+Lo primero que tenemos que hacer es declarar la entidad en el DTD:
+
 ```dtd
 <!ENTITY nombre_entidad "datos">
 ```
 
 Para llamarlo desde el documento de XML, ponemos:
+
 ```xml
 <elemento> ... &nombre_entidad; ... </elemento>
 ```
@@ -249,23 +264,26 @@ Un ejemplo sería:
 `<!ENTITY amp "&#38;">` |	`&amp;`
 `<!ENTITY apos "&#39;">` |	`&apos;`
 
-En este caso, donde aparezca `&amp;` en el fichero XML, se sustituirá por `&\#38;`  
+En este caso, donde aparezca `&amp;` en el fichero XML, se sustituirá por `&\#38;`.
 
 ### Entidades externas
 
 El objetivo de este tipo de entidad es el mismo que la anterior. Este tipo es mucho más útil cuando la información que se va a incluir en la entidad es muy grande, o cuando la información va a estar siempre guardad en un archivo que se irá modificando cada cierto tiempo sin que esto conlleve la modificación del DTD. La información estará guardada en un fichero de texto ó en un fichero xml, en la DTD asociaremos la entidad a este fichero.
 
 Para hacer referencia a un fichero de texto en local, ponemos:
+
 ```dtd
 <!ENTITY nombre_entidad SYSTEM "datos.txt">
 ```
 
 Para hacer referencia a un fichero de texto que no está en local, ponemos:
+
 ```dtd
 <!ENTITY nombre_entidad PUBLIC "datos.txt">
 ```
 
 En el documento XML se invocan con:
+
 ```xml
 &nombre_entidad;
 ```
@@ -275,30 +293,35 @@ Ejemplo:
 ![](imagenes/PROGRAMACION_XML_html_m35e6b886.png)
 
 Poner en el DTD:
+
 ```dtd
 <!ENTITY ley SYSTEM "LeyProteccionDeDatos.txt>
 ```
 
 Poner en documento XML:
+
 ```xml
 <elemento> ... &ley; ... </elemento>
 ```
 
 ### Entidades parámetro
 
-Este tipo de entidades son totalmente distintas a las dos anteriores. Ya que estas NO son para llamarlas desde el documento de XML, sino desde la misma DTD. Es decir, si hay un trozo de código en la DTD que está repetido muchas veces, en vez de escribirlo todas las veces nos creamos una entidad parámetro al principio de la DTD y después la llamamos todas las veces que necesitemos a lo largo de la misma DTD.
+Este tipo de entidades son totalmente distintas a las dos anteriores, ya que estas no son para llamarlas desde el documento de XML, sino desde la misma DTD. Es decir, si hay un trozo de código en la DTD que está repetido muchas veces, en vez de escribirlo todas las veces nos creamos una entidad parámetro al principio de la DTD y después la llamamos todas las veces que necesitemos a lo largo de la misma DTD.
 
 Se declaran al principio de la DTD de la siguiente manera:
+
 ```dtd
 <!ENTITY % nombre_entidad "datos">
 ```
 
 Se llaman en la misma DTD, de la siguiente manera:
+
 ```dtd
 %nombre_entidad;
 ```
 
 Ejemplo:
+
 ```dtd
 <!ENTITY % coches "(FIAT | SEAT | AUDI | CITROEN)*">
 <!ELEMENT concesionario (familiares | turismos | deportivos)*>
