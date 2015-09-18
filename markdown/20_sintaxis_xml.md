@@ -17,7 +17,7 @@ Cierre del nodo raíz
 Define la versión XML y las características del documento:
 
 ```xml
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 ```
 
 Esta etiqueta tiene los siguientes atributos:
@@ -118,15 +118,31 @@ En los ejemplos siguientes podemos ver la sintaxis correcta e incorrecta de un d
 
 Este primer ejemplo es incorrecto porque los valores de los atributos no están entrecomillados:
 
-![](imagenes/PROGRAMACION_XML_html_f06b734.png)
+```xml
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<nota fecha=12/11/99>
+  <para>Elisa</para>
+  <de>Pedro</de>
+  <titulo>Recordatorio</titulo>
+  <cuerpo>No olvides nuestra cita!</cuerpo>
+</nota>
+```
 
-![](imagenes/PROGRAMACION_XML_html_m7f102dc6.png)
+![XML con entrecomillado incorrecto](imagenes/20_sintaxis_xml/02_entrecomillados_mal_xml.png)
 
 Aquí vemos el mismo ejemplo pero con una sintaxis correcta. Los atributos de la etiqueta `<nota>` están delimitados por comillas:
 
-![](imagenes/PROGRAMACION_XML_html_6ee40c3a.png)
+```xml
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<nota fecha="12/11/99">
+  <para>Elisa</para>
+  <de>Pedro</de>
+  <titulo>Recordatorio</titulo>
+  <cuerpo>No olvides nuestra cita!</cuerpo>
+</nota>
+```
 
-![](imagenes/PROGRAMACION_XML_html_me0b402c.png)
+![XML con entrecomillado correcto](imagenes/20_sintaxis_xml/03_entrecomillados_bien_xml.png)
 
 ### Conservación de espacios  
 
@@ -140,11 +156,28 @@ Son ficheros de texto plano, lo que permite trabajar con ellos desde cualquier e
 
 Los documentos XML pueden ampliarse para incluir más información. Vamos a estudiar el ejemplo previo de la nota enviada de Pedro a Elisa:
 
-![](imagenes/PROGRAMACION_XML_html_me0b402c.png)
+```xml
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<nota>
+  <para>Elisa</para>
+  <de>Pedro</de>
+  <titulo>Recordatorio</titulo>
+  <cuerpo>No olvides nuestra cita!</cuerpo>
+</nota>
+```
 
 Imaginemos que hemos creado una aplicación que extrae los elementos `<para>`, `<de>` y `<cuerpo>`. Supongamos que el autor añade una información extra, `<fecha>`:
 
-![](imagenes/PROGRAMACION_XML_html_m418f55c8.png)
+```xml
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<nota>
+  <fecha>27 de mayo del 2010</fecha>
+  <para>Elisa</para>
+  <de>Pedro</de>
+  <titulo>Recordatorio</titulo>
+  <cuerpo>No olvides nuestra cita!</cuerpo>
+</nota>
+```
 
 La aplicación no tiene que fallar ya que debería poder localizar los elementos `<para>`, `<de>` y `<cuerpo>` en el documento y producir la misma salida.
 
@@ -167,7 +200,17 @@ En el ejemplo siguiente, el elemento `<libro>` contiene dos elementos: `<product
 
 El documento XML que describe el libro sería:
 
-![](imagenes/PROGRAMACION_XML_html_4cd8762d.png)
+```xml
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<libro>
+  <titulo>El mundo de XML</titulo>
+  <producto id="33-657" medio="papel"></producto>
+  <capitulo>Introduccion a XML
+    <par>Que es html</par>
+    <par>Que es xml</par>
+  </capitulo>
+</libro>
+```
 
 ### Reglas de nombrado de elementos
 
@@ -268,7 +311,23 @@ Además, el uso de atributos tiene algunos problemas:
 
 Sin embargo, hay ocasiones en las que el uso de atributos si puede ser recomendable. Veamos el siguiente ejemplo para entenderlo:
 
-![](imagenes/PROGRAMACION_XML_html_843822.png)
+```xml
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<mensajes>
+  <nota ID="001">
+    <para>Elisa</para>
+    <de>Pedro</de>
+    <titulo>Recordatorio</titulo>
+    <cuerpo>No olvides nuestra cita!</cuerpo>
+  </nota>
+  <nota ID="002">
+    <para>Juan</para>
+    <de>Francisco</de>
+    <titulo>Cita</titulo>
+    <cuerpo>Quedamos a comer en el Restaurante de abajo.</cuerpo>
+  </nota>
+</mensajes>
+```
 
 El atributo `ID` en este ejemplo es solamente un contador de mensajes y no una parte de los datos. En este caso sí podemos decir que el uso de los atributos está recomendado. La información que contiene es los que se denomina *metainformación* (información sobre la información).
 
@@ -282,7 +341,19 @@ Para poder documentar un programa XML que sirva de guía para comprenderlo, pond
 
 Donde pone `COMENTARIOS` añadimos todo nuestro texto. Evitar utilizar guiones en los comentarios para evitar conflictos.
 
-![](imagenes/PROGRAMACION_XML_html_2b72a961.png)
+```xml
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<email>
+  <!--  Destinatario del mensaje  -->
+  <para>Elisa</para>
+
+  <!--  Remitente del mensaje  -->
+  <de>Pedro</de>
+
+  <titulo>Recordatorio</titulo>
+  <cuerpo>No olvides nuestra cita</cuerpo>
+</email>
+```
 
 ## Caracteres especiales de XML
 
@@ -318,4 +389,33 @@ Para más información se puede consultar:
 
 ## Ejemplo completo de documento XML  
 
-![](imagenes/PROGRAMACION_XML_html_b2acb64.png)
+```xml
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<!-- LISTADO DE PERSONAL AUTORIZADO -->
+<personal>
+  <persona id="01">
+    <nombre>&quot; Directora &quot; Nerea</nombre>
+    <apellido>Urbieta</apellido>
+    <direccion>Gran Via 5, Bilbo</direccion>
+    <matricula>0 &#8364;</matricula>
+  </persona>
+  <persona id="100">
+    <nombre>Idoia</nombre>
+    <apellido>Elorza</apellido>
+    <direccion>Getaria Kalea, Donostia</direccion>
+    <matricula>800 &#8364;</matricula>
+  </persona>
+  <persona id="101">
+    <nombre>Nagore</nombre>
+    <apellido>Dorronsoro</apellido>
+    <direccion>Dato Kalea 6, Gasteiz</direccion>
+    <matricula>800 &#8364;</matricula>
+  </persona>
+  <persona id="102">
+    <nombre>Eli</nombre>
+    <apellido>Agirre</apellido>
+    <direccion>Dato Kalea 8, Gasteiz</direccion>
+    <matricula>800 &#8364;</matricula>
+  </persona>
+</personal>
+```

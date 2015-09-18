@@ -25,17 +25,51 @@ Se buscó entonces definir un subconjunto del SGML que permita:
 
 Veamos primero un trozo de código HTML:  
 
-![Fragmento de HTML](imagenes/PROGRAMACION_XML_html_3e8c014f.png)
+```html
+<h1>
+  Comedor
+</h1>
+<ul>
+  <li>
+    <b>Mesa redonda de madera de arce</b>.
+    El fabricante es <i>Muebles Albacete</i> y su precio 4000.
+  </li>
+  <li>
+    <b>Dos sillas de madera de arce</b>,
+    de excelente calidad, con un coj&iacute;n azul cada una.
+  </li>
+  <li>
+    <b>3 sillas de madera de roble</b>.
+  </li>
+</ul>
+```
 
-![HTML interpretado por el navegador](imagenes/PROGRAMACION_XML_html_30efee4e.png)  
-
+![HTML interpretado por el navegador](imagenes/10_introduccion_xml/01_ejemplo_html.png)  
 HTML es un lenguaje de presentación. Define un conjunto de etiquetas y atributos válidos, una utilización válida de estos elementos y un significado visual para cada elemento del lenguaje.
 
 Ahora veamos un trozo de código XML:  
 
-![Fragmento de XML](imagenes/PROGRAMACION_XML_html_m7b472e49.png)
+```xml
+<comedor>
+  <mesa tipo="redonda" madera="arce">
+    <fabricante>Muebles Albacete</fabricante>
+    <precio>4000</precio>
+  </mesa>
+  <silla madera="arce">
+    <cantidad>2</cantidad>
+    <calidad>excelente</calidad>
+    <cojin incluido="si">
+      <color>azul</color>
+    </cojin>
+  </silla>
+  <silla madera="roble">
+    <cantidad>3</cantidad>
+    <calidad>normal</calidad>
+  </silla>
+</comedor>
+```
 
-![XML cargado en un navegador, sin hoja de estilos](imagenes/PROGRAMACION_XML_html_m451e59f8.png)
+![XML cargado en un navegador, sin hoja de estilos](imagenes/10_introduccion_xml/02_ejemplo_xml.png)
 
 XML está orientado a los datos en sí mismos. No define las etiquetas ni cómo se utilizan, sólo define unas pocas reglas sintácticas para crear documentos. Por eso XML es un metalenguaje (un lenguaje para definir otros lenguajes).
 
