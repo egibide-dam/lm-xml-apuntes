@@ -55,13 +55,13 @@ Incluso podríamos especificar subelementos, por ejemplo:
 El tipo menos restrictivo es `ANY`. Al ser un elemento que permite cualquier contenido, no tiene estructura alguna. Lo mejor es evitar este tipo de elementos.
 
 ```dtd
-<!ELEMENT prueba ANY>
+<!ELEMENT cualquiera ANY>
 ```
 
 Para datos de tipo texto, se usa `#PCDATA`. Este dato puede incluso a llegar a ser vacío. Pero no puede contener ni gráficos ni elementos multimedia.
 
 ```dtd
-<!ELEMENT prueba (#PCDATA)>
+<!ELEMENT texto (#PCDATA)>
 ```
 
 Para elementos vacíos, `EMPTY`. No tienen contenido, solo podrían tener información en sus atributos.  
@@ -224,15 +224,15 @@ Aquí tenemos las tres formas de especificar un DTD:
 
 También es posible incrustar la DTD internamente en el documento XML:
 ```xml
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
 <!DOCTYPE capitulo
-[
-  <!ELEMENT capitulo (titulo, apartado+)>
-  <!ELEMENT titulo (#PCDATA)>
-  <!ELEMENT apartado (#PCDATA)>
-]>
+  [<!ELEMENT capitulo (titulo, apartado+)>
+   <!ELEMENT titulo (#PCDATA)>
+   <!ELEMENT apartado (#PCDATA)>
+  ]>
 <capitulo>
-  ...
+  <titulo>Introducción</titulo>
+  <apartado>Primeros pasos con DTDs.</apartado>
 </capitulo>
 ```
 Incluso es posible tener una DTD interna y otra externa (prevalece la interna).
@@ -288,11 +288,11 @@ En el documento XML se invocan con:
 &nombre_entidad;
 ```
 
-Ejemplo:
+Por ejemplo, para incluir este fragmento de texto:
 
-![](imagenes/PROGRAMACION_XML_html_m35e6b886.png)
+![](imagenes/30_dtds/01_LeyProteccionDeDatos.png)
 
-Poner en el DTD:
+Pondríamos en el DTD:
 
 ```dtd
 <!ENTITY ley SYSTEM "LeyProteccionDeDatos.txt>
