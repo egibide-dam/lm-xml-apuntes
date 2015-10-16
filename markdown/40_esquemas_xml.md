@@ -482,11 +482,11 @@ Para utilizar el esquema desde un documento XML, tenemos que tener en cuenta si 
 - En caso de que el esquema esté en un sitio público:
 ```xml
 <nodo_raiz xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://www.miempresa.com/mi_esquema.xml">    
+  xsi:schemaLocation="http://www.miempresa.com/mi_esquema.xsd">
 ```
 
 - En caso de que el esquema esté en local:
 ```xml
 <nodo_raiz xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:noNamespaceSchemaLocation="mi_esquema.xml">
+  xsi:noNamespaceSchemaLocation="mi_esquema.xsd">
 ```
