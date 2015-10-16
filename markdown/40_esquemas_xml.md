@@ -296,6 +296,28 @@ En este ejemplo se define el elemento `libro`, con tres posibles subelementos. P
 </libro>
 ```
 
+### Elemento `attribute`
+
+Para definir los atributos de un elemento o tipo de elemento utilizamos la siguiente estructura:
+
+```xml
+<xs:attribute name="nombre_atributo" type="tipo_atributo" use="modificador" />
+```
+
+Puede contener los siguientes atributos:
+
+`name`
+: Es el nombre del atributo.
+
+`type`
+: Es el tipo del atributo.
+
+`use`
+: Para definir si es un atributo obligatorio u opcional. Para definir un atributo como obligatorio le asignaremos el valor `required`. Por defecto es opcional.
+
+La localización del atributo no puede ir por sí solo, ya que con esta estructura no sabríamos a que elemento se refiere. Para ello se pone siempre dentro de una estructura `complexType`.
+
+
 ### Elemento `simpleType`
 
 Un tipo simple sirve para definir una serie de restricciones a un elemento o a un atributo. Es muy útil para definir rangos, tipos enumerados, etc.
@@ -429,27 +451,6 @@ También en este caso hay dos posibles estructuras:
   </xs:restriction>
 </xs:simpleType>
 ```
-
-### Elemento `attribute`  
-
-Para definir los atributos de un elemento o tipo de elemento utilizamos la siguiente estructura:
-
-```xml
-<xs:attribute name="nombre_atributo" type="tipo_atributo" use="modificador" />
-```
-
-Puede contener los siguientes atributos:
-
-`name`
-: Es el nombre del atributo.
-
-`type`
-: Es el tipo del atributo.
-
-`use`
-: Para definir si es un atributo obligatorio u opcional. Para definir un atributo como obligatorio le asignaremos el valor `required`. Por defecto es opcional.
-
-La localización del atributo no puede ir por sí solo, ya que con esta estructura no sabríamos a que elemento se refiere. Para ello se pone siempre dentro de una estructura `complexType`.
 
 ## Convertir DTDs en esquemas XML  
 
