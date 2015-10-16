@@ -153,7 +153,7 @@ Sirve para definir elementos que tienen sub-elementos y/o atributos.
 ```xml
 <xs:complexType name="nombre_del_tipo_complejo">
   <xs:sequence/all/choice>
-    ... sub elementos ...
+    ... subelementos ...
   </xs:sequence/all/choice>
   ... atributos ...
 </xs:complexType>
@@ -205,7 +205,7 @@ Dos posibles estructuras:
 - La segunda estructura lo que hace es primero definir el elemento con un tipo, y después definir fuera ese tipo:
 
     ```xml
-    <xs:element name="contacto" type="tipo_Contacto"/>
+    <xs:element name="contacto" type="tipo_contacto"/>
 
     <xs:complexType name="tipo_contacto">
       <xs:sequence>
@@ -435,7 +435,7 @@ También en este caso hay dos posibles estructuras:
 Para definir los atributos de un elemento o tipo de elemento utilizamos la siguiente estructura:
 
 ```xml
-<xs:attribute name="nombre_atributo" type="tipo_atributo"/>
+<xs:attribute name="nombre_atributo" type="tipo_atributo" use="modificador" />
 ```
 
 Puede contener los siguientes atributos:
