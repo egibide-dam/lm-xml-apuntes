@@ -58,8 +58,8 @@ L a_imp = {a, aaa, aaaaa, ...}
 Su gramática o conjunto de reglas es la que se muestra a continuación: 
 
 ```
-S := a   (1)
-S := Saa (2)
+S → a    (1)
+S → Saa  (2)
 ```
 
 El alfabeto, obviamente, está formado únicamente por la letra `a`:
