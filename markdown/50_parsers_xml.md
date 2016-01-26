@@ -52,20 +52,20 @@ Veamos estas técnicas con un ejemplo muy concreto y fácil de entender:
 Supongamos el lenguaje de cadenas que contienen un número impar de aes: 
 
 ```
-L a_imp={a, aaa, aaaaa, ...}
+L a_imp = {a, aaa, aaaaa, ...}
 ```
 
 Su gramática o conjunto de reglas es la que se muestra a continuación: 
 
 ```
-S:=a
-S:=Saa
+S := a   (1)
+S := Saa (2)
 ```
 
 El alfabeto, obviamente, está formado únicamente por la letra `a`:
 
 ```
-A a_imp={a}
+A a_imp = {a}
 ```
 
 Y nos preguntan si la cadena `w=aaaa` pertenece o no al lenguaje.
@@ -78,9 +78,9 @@ Derivar desde el axioma
 : El parser va a crear árboles con la estructura de cada posible cadena. Si genera dicha cadena en uno de sus árboles la acepta. Si genera una cadena de longitud mayor a la dada y aún no ha encontrado la cadena, la rechaza.
 
     ```
-    S → a
+    S → a                   
 
-    S → Saa → aaa
+    S → Saa → aaa           
 
     S → Saa → Saaaa → aaaaa
     ```
@@ -91,16 +91,31 @@ Partir de la cadena
 : El parser va a intentar reducir las cadenas que aparecen a la parte de la derecha de las reglas de la gramática con su parte izquierda. Si llega al axioma (`S`) la acepta, si no, obviamente, no.
 
     ```
-    a S
+    aaaa  (1)  
+    -
 
-    a S
+    Saaa  (2)
+    ---
 
-    a
-
-    a ¿?
+    Sa    (?)
     ```
 
     Como no existe ninguna forma de reducir `Sa` (no existe en la parte derecha de ninguna regla), el parser puede asegurar que la cadena no pertenece al lenguaje.
+
+    Si por el contrario, la cadena pertenece al lenguaje:
+
+    ```
+    aaaaa  (1)  
+    -
+
+    Saaaa  (2)
+    ---
+
+    Saa    (2)
+    ---
+
+    S      OK
+    ```
 
 ## Tipos de Parsers
 
