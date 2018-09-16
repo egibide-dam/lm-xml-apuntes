@@ -6,12 +6,12 @@ echo "..." >> build/metadata.temp
 
 ARCHIVOS="markdown/[10-50]*.md"
 
-pandoc -s -S --toc \
+pandoc -s --toc \
 --epub-cover-image=recursos/cover.png \
---epub-stylesheet=recursos/estilos.css \
+--css=recursos/estilos.css \
 --highlight-style=haddock \
 --toc-depth=3 \
--f markdown \
+-f markdown+smart \
 -t epub3 \
 -o build/xml.epub \
 build/metadata.temp \
