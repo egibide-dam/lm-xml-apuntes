@@ -16,21 +16,25 @@ Pero además de estos parsers ya elaborados, los lenguajes de programación más
 
 La funcionalidad de estas aplicaciones queda clara pero, ¿Cómo puede saber un parser si una cadena concreta pertenece a un lenguaje? Para ello debemos recordar algunos de los conceptos básicos en los que se basan las teorías de gramática y lenguajes finitos, empezando por algunas definiciones:
 
-Lenguaje
-: Es el conjunto de todos los elementos (cadenas) que pueden ser generadas a través del uso de ciertas reglas. En nuestra realidad más básica un lenguaje o idioma es el conjunto de frases que siguen una sintaxis y una semántica por medio de las cuales pueden entenderse aquellas personas que saben de estas normas.
+1. Lenguaje
 
-Gramática
-: Es el conjunto de normas gracias a las cuales se pueden hacer dos cosas:
+	Es el conjunto de todos los elementos (cadenas) que pueden ser generadas a través del uso de ciertas reglas. En nuestra realidad más básica un lenguaje o idioma es el conjunto de frases que siguen una sintaxis y una semántica por medio de las cuales pueden entenderse aquellas personas que saben de estas normas.
 
-    1.  Generar las cadenas (frases) que pertenecen al lenguaje (idioma).
-    2.  Determinar si una frase dada pertenece o no a ese lenguaje en
+2. Gramática
+
+	Es el conjunto de normas gracias a las cuales se pueden hacer dos cosas:
+
+   1.  Generar las cadenas (frases) que pertenecen al lenguaje (idioma).
+   2.  Determinar si una frase dada pertenece o no a ese lenguaje en
         concreto.
 
-Alfabeto
-: Es el conjunto de unidades léxicas (lexemas) que determinan la posible composición de las cadenas de un lenguaje. Los lenguajes pueden contener el mismo alfabeto, usar alguna variante (incorporación o eliminación) o ser completamente distinto. Por ejemplo, en el lenguaje (idioma) inglés no existen las "ñ" que sí existen en castellano.
+3. Alfabeto
 
-Cadena
-: Es el elemento del lenguaje que, estando formada por los lexemas de su alfabeto, expresa una idea o concreción de ese lenguaje.
+	Es el conjunto de unidades léxicas (lexemas) que determinan la posible composición de las cadenas de un lenguaje. Los lenguajes pueden contener el mismo alfabeto, usar alguna variante (incorporación o eliminación) o ser completamente distinto. Por ejemplo, en el lenguaje (idioma) inglés no existen las "ñ" que sí existen en castellano.
+
+4. Cadena
+
+	Es el elemento del lenguaje que, estando formada por los lexemas de su alfabeto, expresa una idea o concreción de ese lenguaje.
 
 Siguiendo estas definiciones y extrapolándolas al tema que nos concierne diríamos que:
 
@@ -44,7 +48,7 @@ Una vez entendidos los conceptos anteriores tenemos que plantearnos una pregunta
 
 Existen básicamente 2 modos:
 
-- Derivar desde el axioma de la gramática correspondiente al lenguaje una a una todas las cadenas del lenguaje hasta que alguna coincida con la que se estudia o bien no se puedan generar más cadenas y ninguna coincida (esto se puede refinar, no obstante, no se aconseja este método, al menos sin refinar)
+- Derivar desde el axioma de la gramática correspondiente al lenguaje una a una todas las cadenas del lenguaje hasta que alguna coincida con la que se estudia o bien no se puedan generar más cadenas y ninguna coincida (esto se puede refinar, no obstante, no se aconseja este método, al menos sin refinar).
 - Partir de la cadena e intentar hacer el camino inverso (llegar al axioma) para comprobar si puede ser generada por la gramática partiendo del axioma.
 
 Veamos estas técnicas con un ejemplo muy concreto y fácil de entender:
@@ -74,58 +78,62 @@ Usando nuestra lógica humana sabemos de antemano que `aaaa` no tiene un número
 
 Pero, ¿cómo usa un parser los mecanismos para darse cuenta de eso?
 
-Derivar desde el axioma
-: El parser va a crear árboles con la estructura de cada posible cadena. Si genera dicha cadena en uno de sus árboles la acepta. Si genera una cadena de longitud mayor a la dada y aún no ha encontrado la cadena, la rechaza.
+### Derivar desde el axioma
 
-    ```
-    S → a                   
+El parser va a crear árboles con la estructura de cada posible cadena. Si genera dicha cadena en uno de sus árboles la acepta. Si genera una cadena de longitud mayor a la dada y aún no ha encontrado la cadena, la rechaza.
 
-    S → Saa → aaa           
+```
+S → a                   
 
-    S → Saa → Saaaa → aaaaa
-    ```
+S → Saa → aaa           
 
-    El parser encuentra una cadena de mayor longitud que `aaaa` y no se ha generado la buscada, luego la cadena no pertenece al lenguaje.
+S → Saa → Saaaa → aaaaa
+```
 
-Partir de la cadena
-: El parser va a intentar reducir las cadenas que aparecen a la parte de la derecha de las reglas de la gramática con su parte izquierda. Si llega al axioma (`S`) la acepta, si no, obviamente, no.
+El parser encuentra una cadena de mayor longitud que `aaaa` y no se ha generado la buscada, luego la cadena no pertenece al lenguaje.
 
-    ```
-    aaaa  (1)  
-    -
+### Partir de la cadena
 
-    Saaa  (2)
-    ---
+El parser va a intentar reducir las cadenas que aparecen a la parte de la derecha de las reglas de la gramática con su parte izquierda. Si llega al axioma (`S`) la acepta, si no, obviamente, no.
 
-    Sa    (?)
-    ```
+```
+aaaa  (1)  
+-
 
-    Como no existe ninguna forma de reducir `Sa` (no existe en la parte derecha de ninguna regla), el parser puede asegurar que la cadena no pertenece al lenguaje.
+Saaa  (2)
+---
 
-    Si por el contrario, la cadena pertenece al lenguaje:
+Sa    (?)
+```
 
-    ```
-    aaaaa  (1)  
-    -
+Como no existe ninguna forma de reducir `Sa` (no existe en la parte derecha de ninguna regla), el parser puede asegurar que la cadena no pertenece al lenguaje.
 
-    Saaaa  (2)
-    ---
+Si por el contrario, la cadena pertenece al lenguaje:
 
-    Saa    (2)
-    ---
+```
+aaaaa  (1)  
+-
 
-    S      OK
-    ```
+Saaaa  (2)
+---
+
+Saa    (2)
+---
+
+S      OK
+```
 
 ## Tipos de Parsers
 
 Según la técnica validante utilizada podemos afirmar que existen 2 tipos de parsers:
 
-Parser descendente (*top-down*)
-: El que parte del axioma e intenta llegar a la cadena. Corresponde al primer modo. Es sencillo de construir pero no muy eficiente en cuanto a recursos empleados (depende de la sencillez de la gramática). Debemos fijarnos que este tipo de parser crea árboles y guarda la información en sus nodos u hojas lo cual implica consumo de memoria, tiempo de gestión... La ventaja es que todo está guardado al usarse una estructura de datos.
+1. Parser descendente (*top-down*)
 
-Parser ascendente (*bottom-up*)
-: El que parte de la cadena e intenta llegar al axioma. Corresponde al segundo modo. Es más general y consume menos recursos. Sin embargo los datos no se guardan y en caso de que existan reglas ambiguas (que permiten dos caminos) es posible que se precise de un técnica *back-and-go*, lo que implica volver al punto de la ambigüedad y coger el otro camino... y esto de retomar el estado previo es muy costoso por no guardarse los datos.
+	El que parte del axioma e intenta llegar a la cadena. Corresponde al primer modo. Es sencillo de construir pero no muy eficiente en cuanto a recursos empleados (depende de la sencillez de la gramática). Debemos fijarnos que este tipo de parser crea árboles y guarda la información en sus nodos u hojas lo cual implica consumo de memoria, tiempo de gestión... La ventaja es que todo está guardado al usarse una estructura de datos.
+
+2. Parser ascendente (*bottom-up*)
+
+	El que parte de la cadena e intenta llegar al axioma. Corresponde al segundo modo. Es más general y consume menos recursos. Sin embargo los datos no se guardan y en caso de que existan reglas ambiguas (que permiten dos caminos) es posible que se precise de un técnica *back-and-go*, lo que implica volver al punto de la ambigüedad y coger el otro camino... y esto de retomar el estado previo es muy costoso por no guardarse los datos.
 
 En cualquier lenguaje de programación existen implementados estos dos tipos de parser (se han creado las clases, paquetes, librerías, etc. para implementarlos). A los que siguen la primera técnica (deducción) se les denomina parsers DOM y a los que siguen la segunda (inducción) se les llama parsers SAX.
 
@@ -133,17 +141,17 @@ Por tanto una de las primeras disyuntivas será elegir el tipo de parser a utili
 
 Es preferible usar el descendente (DOM) cuando:
 
-1.  Haya que tratar la información del XML: hacer consultas, búsquedas, reorganizaciones.
-2.  Queramos crear un fichero XML físico a partir de unos datos cargados en memoria.
-3.  Haya que transformar el documento XML a HTML, PDF, ...
-4.  Las etiquetas que conforman el documento no sean muy numerosas, ya que cada etiqueta va a ser un nodo del árbol.
-5.  En la gramática haya muchas reglas ambiguas.
+-  Haya que tratar la información del XML: hacer consultas, búsquedas, reorganizaciones.
+-  Queramos crear un fichero XML físico a partir de unos datos cargados en memoria.
+-  Haya que transformar el documento XML a HTML, PDF, ...
+-  Las etiquetas que conforman el documento no sean muy numerosas, ya que cada etiqueta va a ser un nodo del árbol.
+-  En la gramática haya muchas reglas ambiguas.
 
 Es preferible usar el ascendente (SAX) cuando:
 
-1.  Solo se quiere validar si un XML determinado cumple las reglas específicas de su DTD.
-2.  Haya pocas reglas en el DTD o habiendo muchas ninguna sea ambigua (o pocas de ellas).
-3.  Los tiempos de respuesta o la capacidad de memoria sean críticos.
+-  Solo se quiere validar si un XML determinado cumple las reglas específicas de su DTD.
+-  Haya pocas reglas en el DTD o habiendo muchas ninguna sea ambigua (o pocas de ellas).
+-  Los tiempos de respuesta o la capacidad de memoria sean críticos.
 
 Sea como fuere debemos tener en cuenta que un parser sólo estudia si la estructura (la sintaxis) del documento XML es correcta, no su significado. Es decir si estamos trabajando, por ejemplo, con un documento XML de un concesionario de coches, el parser podrá estudiar si existen las etiquetas `<modelo>`, `<casa>`, `<matricula>`, etc. Si están en un orden determinado, si se ha introducido un valor... Pero no será capaz de determinar, por ejemplo si el modelo `Polo` pertenece o no a la casa `SEAT`, o incluso si existe o no el modelo `Juan`, eso será responsabilidad de la lógica de programación que tendremos que escribir.
 
