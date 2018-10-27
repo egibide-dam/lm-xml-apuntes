@@ -91,7 +91,7 @@ Puede contener atributos cuyos valores siempre van entre comillas:
 `ref`
 : Para importar de otros esquemas o hacer referencia a un elemento ya declarado anteriormente en este mismo esquema.
 
-    > Sin poner `maxOccurs` ni `minOccurs`, este elemento aparece siempre exactamente una sola vez.
+> Sin poner `maxOccurs` ni `minOccurs`, este elemento aparece siempre exactamente una sola vez.
 
 ### Tipos de datos   
 
