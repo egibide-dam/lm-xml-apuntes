@@ -128,7 +128,7 @@ Este primer ejemplo es incorrecto porque los valores de los atributos no están 
 </nota>
 ```
 
-![XML con entrecomillado incorrecto](imagenes/20_sintaxis_xml/02_entrecomillados_mal_xml.png)
+![XML con entrecomillado incorrecto](/imagenes/20_sintaxis_xml/02_entrecomillados_mal_xml.png)
 
 Aquí vemos el mismo ejemplo pero con una sintaxis correcta. Los atributos de la etiqueta `<nota>` están delimitados por comillas:
 
@@ -142,7 +142,7 @@ Aquí vemos el mismo ejemplo pero con una sintaxis correcta. Los atributos de la
 </nota>
 ```
 
-![XML con entrecomillado correcto](imagenes/20_sintaxis_xml/03_entrecomillados_bien_xml.png)
+![XML con entrecomillado correcto](/imagenes/20_sintaxis_xml/03_entrecomillados_bien_xml.png)
 
 ### Conservación de espacios  
 

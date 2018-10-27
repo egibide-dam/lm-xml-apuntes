@@ -44,7 +44,7 @@ Veamos primero un trozo de código HTML:
 </ul>
 ```
 
-![HTML interpretado por el navegador](imagenes/10_introduccion_xml/01_ejemplo_html.png)  
+![HTML interpretado por el navegador](/imagenes/10_introduccion_xml/01_ejemplo_html.png)  
 HTML es un lenguaje de presentación. Define un conjunto de etiquetas y atributos válidos, una utilización válida de estos elementos y un significado visual para cada elemento del lenguaje.
 
 Ahora veamos un trozo de código XML:  
@@ -69,7 +69,7 @@ Ahora veamos un trozo de código XML:
 </comedor>
 ```
 
-![XML cargado en un navegador, sin hoja de estilos](imagenes/10_introduccion_xml/02_ejemplo_xml.png)
+![XML cargado en un navegador, sin hoja de estilos](/imagenes/10_introduccion_xml/02_ejemplo_xml.png)
 
 XML está orientado a los datos en sí mismos. No define las etiquetas ni cómo se utilizan, sólo define unas pocas reglas sintácticas para crear documentos. Por eso XML es un metalenguaje (un lenguaje para definir otros lenguajes).
 

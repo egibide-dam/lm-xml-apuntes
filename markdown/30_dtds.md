@@ -290,7 +290,7 @@ En el documento XML se invocan con:
 
 Por ejemplo, para incluir este fragmento de texto:
 
-![](imagenes/30_dtds/01_LeyProteccionDeDatos.png)
+![](/imagenes/30_dtds/01_LeyProteccionDeDatos.png)
 
 Pondríamos en el DTD:
 

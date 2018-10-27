@@ -46,7 +46,7 @@ Elementos simples
 Elementos complejos
 : Elementos con hijos y/o atributos.
 
-![](imagenes/personal_interno.png)
+![](/imagenes/40_esquemas_xml/personal_interno.png)
 
 En este ejemplo tenemos los siguientes tipos de elementos:  
 
