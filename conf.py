@@ -20,7 +20,7 @@
 # -- Project information -----------------------------------------------------
 
 project = 'XML'
-copyright = '2018 Departamento de Informática, Egibide - CC BY 4.0'
+copyright = u'2018 Departamento de Informática, Egibide - CC BY 4.0'
 author = 'Egibide'
 
 # The short X.Y version
