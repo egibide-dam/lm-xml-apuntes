@@ -15,10 +15,3 @@ Apuntes de XML
    DTDs <markdown/30_dtds.md>
    Esquemas XML <markdown/40_esquemas_xml.md>
    Parsers XML <markdown/50_parsers_xml.md>
-
-Índices y tablas
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
