@@ -77,6 +77,8 @@ pygments_style = None
 #
 html_theme = 'sphinx_rtd_theme'
 
+html_title = "Lenguajes de marcas"
+
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.
@@ -102,7 +104,7 @@ html_static_path = ['_static']
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'XMLdoc'
+htmlhelp_basename = 'XML'
 
 
 # -- Options for LaTeX output ------------------------------------------------
@@ -159,12 +161,12 @@ texinfo_documents = [
 # -- Options for Epub output -------------------------------------------------
 
 # Bibliographic Dublin Core info.
-epub_title = project
+epub_title = "Apuntes de XML"
 
 # The unique identifier of the text. This can be a ISBN number
 # or the project homepage.
 #
-# epub_identifier = ''
+epub_identifier = 'https://github.com/Egibide-DAM/lm-xml-apuntes'
 
 # A unique identification for the text.
 #
@@ -173,6 +175,10 @@ epub_title = project
 # A list of files that should not be packed into the epub file.
 epub_exclude_files = ['search.html']
 
+epub_cover = ('_static/cover.png', 'epub-cover.html')
+#epub_css_files = ['_static/estilos.css']
+
+epub_basename = "XML"
 
 # REF: Soporte para Markdown: https://docs.readthedocs.io/en/latest/intro/getting-started-with-sphinx.html#using-markdown-with-sphinx
 from recommonmark.parser import CommonMarkParser
