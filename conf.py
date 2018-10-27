@@ -19,7 +19,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'XML'
+project = 'Lenguajes de marcas'
 copyright = u'2018 Departamento de Informática, Egibide - CC BY 4.0'
 author = 'Egibide'
 

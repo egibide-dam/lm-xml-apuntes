@@ -4,7 +4,7 @@
    contain the root `toctree` directive.
 
 Apuntes de XML
-===============================
+==============
 
 .. toctree::
    :maxdepth: 2
