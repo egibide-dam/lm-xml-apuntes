@@ -4,34 +4,22 @@ Esquemas XML
 Introducción
 ------------
 
-XML Schema es un lenguaje de esquema utilizado para describir la
-estructura y las restricciones de los contenidos de los documentos XML
-de una forma muy precisa, más allá de las normas sintácticas impuestas
-por el propio lenguaje XML. Se consigue así una percepción del tipo de
-documento con un nivel alto de abstracción. Fue desarrollado por el
-World Wide Web Consortium (W3C) y alcanzó el nivel de recomendación en
-mayo de 2001.
+XML Schema es un lenguaje de esquema utilizado para describir la estructura y las restricciones de los contenidos de los documentos XML de una forma muy precisa, más allá de las normas sintácticas impuestas por el propio lenguaje XML. Se consigue así una percepción del tipo de documento con un nivel alto de abstracción. Fue desarrollado por el World Wide Web Consortium (W3C) y alcanzó el nivel de recomendación en mayo de 2001.
 
-XML Schema está pensado para proporcionar una mayor potencia expresiva
-que las DTD, menos capaces al describir los documentos a nivel formal.
+XML Schema está pensado para proporcionar una mayor potencia expresiva que las DTD, menos capaces al describir los documentos a nivel formal.
 
 Las ventajas que aporta son:
 
--  Se basa en XML, por lo tanto tiene todas las ventajas de un documento
-   XML.
+-  Se basa en XML, por lo tanto tiene todas las ventajas de un documento XML.
 -  Tiene una gran variedad de tipos de datos.
 -  Tiene un modelo de datos abierto.
--  Soporta espacios de nombres (singularidad de los nombres, algo que no
-   podíamos tener con los DTDs).
+-  Soporta espacios de nombres (singularidad de los nombres, algo que no podíamos tener con los DTDs).
 -  Soporta tipos en los atributos.
 
 Nodo raíz ``schema``
 --------------------
 
-Los esquemas mantienen la estructura y la sintaxis de los documentos XML
-por lo tanto deben tener un nodo raíz y dentro de él contener todo el
-esquema. Por supuesto debe tener el prólogo (es decir, la definición de
-la versión XML).
+Los esquemas mantienen la estructura y la sintaxis de los documentos XML por lo tanto deben tener un nodo raíz y dentro de él contener todo el esquema. Por supuesto debe tener el prólogo (es decir, la definición de la versión XML).
 
 .. code-block:: xml
 
@@ -40,23 +28,11 @@ la versión XML).
      ...
    </xs:schema>
 
-Fíjese en que hace referencia a una URL, esa dirección contiene la
-definición de todos los elementos y atributos que se pueden utilizar en
-un esquema. Eso no quiere decir que para programar en XML se necesite
-estar conectado a Internet. 
+Fíjese en que hace referencia a una URL, esa dirección contiene la definición de todos los elementos y atributos que se pueden utilizar en un esquema. Eso no quiere decir que para programar en XML se necesite estar conectado a Internet. 
 
-Utiliza un atributo ``xmlns`` que significa *XML namespace* para crear
-un espacio de nombres de XML vinculado a un prefijo que en este caso es
-``xs``, pero que puede ser cualquier cosa ya que sólo hace la función de
-variable (también se usa ``xsd``). Sirve para que cada vez que se
-utilice un elemento o tipo de esa “librería” se le ponga ese prefijo, en
-el caso de que se utilizasen más referencias a otras URLs se
-distinguiría claramente los elementos de cada uno de ellos por medio de
-los prefijos.
+Utiliza un atributo ``xmlns`` que significa *XML namespace* para crear un espacio de nombres de XML vinculado a un prefijo que en este caso es ``xs``, pero que puede ser cualquier cosa ya que sólo hace la función de variable (también se usa ``xsd``). Sirve para que cada vez que se utilice un elemento o tipo de esa “librería” se le ponga ese prefijo, en el caso de que se utilizasen más referencias a otras URLs se distinguiría claramente los elementos de cada uno de ellos por medio de los prefijos.
 
-Utilizando este atributo ``xmlns``, crea un espacio de nombres para cada
-URL referenciada, así si hubiese dos elementos con el mismo nombre se
-diferencian claramente.
+Utilizando este atributo ``xmlns``, crea un espacio de nombres para cada URL referenciada, así si hubiese dos elementos con el mismo nombre se diferencian claramente.
 
 Declaración de elementos
 ------------------------
@@ -73,7 +49,11 @@ Elementos simples
 Elementos complejos
    Elementos con hijos y/o atributos.
 
-|image0|
+.. figure:: /imagenes/40_esquemas_xml/personal_interno.png
+   :scale: 60 %
+   :align: center
+
+   Jerarquía de ejemplo.
 
 En este ejemplo tenemos los siguientes tipos de elementos:
 
@@ -90,13 +70,9 @@ Las dos estructuras posibles son:
 
    <xs:element name="nombre_del_elemento" type="tipo" />
 
-Esta estructura es vacía, es decir se define un nombre de elemento y un
-tipo, el tipo puede ser un estándar de XML o un tipo definido por
-nosotros que describiría aquellos elementos que tengan hijos (complejos
-o aquellos elementos que no tienen hijos pero tienen restricciones).
+Esta estructura es vacía, es decir se define un nombre de elemento y un tipo, el tipo puede ser un estándar de XML o un tipo definido por nosotros que describiría aquellos elementos que tengan hijos (complejos o aquellos elementos que no tienen hijos pero tienen restricciones).
 
-Seguido de esta definición vendría debajo la definición del tipo. Esta
-estructura es la más aconsejable pero no la única.
+Seguido de esta definición vendría debajo la definición del tipo. Esta estructura es la más aconsejable pero no la única.
 
 .. code-block:: xml
 
@@ -104,9 +80,7 @@ estructura es la más aconsejable pero no la única.
      ...
    </xs:element>
 
-Esta estructura sería equivalente a la anterior sólo que en este caso no
-se pone el tipo del elemento como atributo sino que esa definición se
-haría entre las etiquetas de inicio y cierre de ``element``.
+Esta estructura sería equivalente a la anterior sólo que en este caso no se pone el tipo del elemento como atributo sino que esa definición se haría entre las etiquetas de inicio y cierre de ``element``.
 
 Puede contener atributos cuyos valores siempre van entre comillas:
 
@@ -119,22 +93,19 @@ Puede contener atributos cuyos valores siempre van entre comillas:
 ``minOccurs``
    Número mínimo de veces que puede aparecer.
 ``ref``
-   Para importar de otros esquemas o hacer referencia a un elemento ya
-   declarado anteriormente en este mismo esquema.
+   Para importar de otros esquemas o hacer referencia a un elemento ya declarado anteriormente en este mismo esquema.
 
 .. note::
 
-   Sin poner ``maxOccurs`` ni ``minOccurs``, este elemento aparece
-   siempre exactamente una sola vez.
+   Sin poner ``maxOccurs`` ni ``minOccurs``, este elemento aparece siempre exactamente una sola vez.
 
 Tipos de datos
 ~~~~~~~~~~~~~~
 
+En las dos tablas siguientes se enumeran los tipos de datos primitivos y derivados que podemos usar en los esquemas XML.
+
 Primitivos
 ^^^^^^^^^^
-
-En la tabla siguiente se enumeran los tipos de datos primitivos de los
-esquemas XML, y la descripción del tipo de datos.
 
 +------------------------------------+---------------------------------+
 | Tipo de dato                       | Descripción                     |
@@ -221,7 +192,7 @@ esquemas XML, y la descripción del tipo de datos.
 |                                    | (``[0-9a-fA-F]``) y representa  |
 |                                    | el código del octeto.           |
 +------------------------------------+---------------------------------+
-| base64Binary                       | Representa datos binarios       |
+| ``base64Binary``                   | Representa datos binarios       |
 |                                    | arbitrarios codificados en      |
 |                                    | Base64. ``base64Binary`` es el  |
 |                                    | conjunto de secuencias de       |
@@ -439,9 +410,9 @@ Sirve para definir elementos que tienen sub-elementos y/o atributos.
 .. code-block:: xml
 
    <xs:complexType name="nombre_del_tipo_complejo">
-     <xs:sequence/all/choice>
+     <xs:sequence> <!-- sequence/all/choice -->
        ... subelementos ...
-     </xs:sequence/all/choice>
+     </xs:sequence>
      ... atributos ...
    </xs:complexType>
 
@@ -450,8 +421,7 @@ Puede contener elementos secundarios:
 ``sequence``
    Implica que deben aparecer todos los elementos y en ese orden (AND).
 ``all``
-   Implica que deben aparecer todos los elementos, sin importar el
-   orden.
+   Implica que deben aparecer todos los elementos, sin importar el orden.
 ``choice``
    Implica que sólo debe aparecer uno de esos elementos (OR).
 ``attribute``
@@ -484,8 +454,7 @@ Dos posibles estructuras:
         </xs:complexType>
       </xs:element>
 
--  La segunda estructura lo que hace es primero definir el elemento con
-   un tipo, y después definir fuera ese tipo:
+-  La segunda estructura lo que hace es primero definir el elemento con un tipo, y después definir fuera ese tipo:
 
    .. code-block:: xml
 
@@ -501,30 +470,23 @@ Dos posibles estructuras:
         <xs:attribute name="fecha" type="xs:date"/>
       </xs:complexType>
 
-   La mejor opción es la segunda porque permite reutilizar ese tipo para
-   otros elementos. Además los parsers toleran mejor esta estructura.
+.. note::
+
+   La mejor opción es la segunda porque permite reutilizar ese tipo para otros elementos. Además los parsers toleran mejor esta estructura.
 
 Elementos ``sequence``, ``all`` y ``choice``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Estos tres elementos nunca se utilizan juntos, aparece tan sólo uno de
-ellos en el elemento ``complexType``. Sirve para describir en qué orden
-y cómo deben aparecer los subelementos del ``complexType``.
+Estos tres elementos nunca se utilizan juntos, aparece tan sólo uno de ellos en el elemento ``complexType``. Sirve para describir en qué orden y cómo deben aparecer los subelementos del ``complexType``.
 
-Es equivalente a, en el DTD, poner comas o barras verticales en la
-descripción de un elemento con hijos.
+Es equivalente a, en el DTD, poner comas o barras verticales en la descripción de un elemento con hijos.
 
 ``sequence``
 ^^^^^^^^^^^^
 
-Este elemento indica que es obligatorio que aparezcan todos los
-elementos especificados y en el orden en que se definen. Es el
-equivalente a un AND.
+Este elemento indica que es obligatorio que aparezcan todos los elementos especificados y en el orden en que se definen. Es el equivalente a un AND.
 
-En este ejemplo se define el elemento ``libro``, con tres subelementos
-obligatorios y que deben aparecer exactamente en este orden (1º
-``titulo``, 2º ``autor`` y 3º ``editorial``) y no aparecen es este orden
-o uno de ellos no aparece, el parser produciría un error.
+En este ejemplo se define el elemento ``libro``, con tres subelementos obligatorios y que deben aparecer exactamente en este orden (1º ``titulo``, 2º ``autor`` y 3º ``editorial``) y no aparecen es este orden o uno de ellos no aparece, el parser produciría un error.
 
 .. code-block:: xml
 
@@ -547,11 +509,9 @@ o uno de ellos no aparece, el parser produciría un error.
 ``all``
 ^^^^^^^
 
-Este elemento indica que es obligatorio que aparezcan todos los
-elementos especificados y pero NO en el orden en que se definen.
+Este elemento indica que es obligatorio que aparezcan todos los elementos especificados y pero NO en el orden en que se definen.
 
-En este ejemplo se define el elemento ``libro``, con tres subelementos
-obligatorios.
+En este ejemplo se define el elemento ``libro``, con tres subelementos obligatorios.
 
 .. code-block:: xml
 
@@ -574,12 +534,9 @@ obligatorios.
 ``choice``
 ^^^^^^^^^^
 
-Este elemento indica que de todos los elementos especificados sólo debe
-aparecer uno de ellos. Es el equivalente al OR.
+Este elemento indica que de todos los elementos especificados sólo debe aparecer uno de ellos. Es el equivalente al OR.
 
-En este ejemplo se define el elemento ``libro``, con tres posibles
-subelementos. Puede tener o un ``titulo`` o un ``autor`` o una
-``editorial``.
+En este ejemplo se define el elemento ``libro``, con tres posibles subelementos. Puede tener o un ``titulo`` o un ``autor`` o una ``editorial``.
 
 .. code-block:: xml
 
@@ -600,8 +557,7 @@ subelementos. Puede tener o un ``titulo`` o un ``autor`` o una
 Elemento ``attribute``
 ~~~~~~~~~~~~~~~~~~~~~~
 
-Para definir los atributos de un elemento o tipo de elemento utilizamos
-la siguiente estructura:
+Para definir los atributos de un elemento o tipo de elemento utilizamos la siguiente estructura:
 
 .. code-block:: xml
 
@@ -614,20 +570,14 @@ Puede contener los siguientes atributos:
 ``type``
    Es el tipo del atributo.
 ``use``
-   Para definir si es un atributo obligatorio u opcional. Para definir
-   un atributo como obligatorio le asignaremos el valor ``required``.
-   Por defecto es opcional.
+   Para definir si es un atributo obligatorio u opcional. Para definir un atributo como obligatorio le asignaremos el valor ``required``. Por defecto es opcional.
 
-La localización del atributo no puede ir por sí solo, ya que con esta
-estructura no sabríamos a que elemento se refiere. Para ello se pone
-siempre dentro de una estructura ``complexType``.
+La localización del atributo no puede ir por sí solo, ya que con esta estructura no sabríamos a que elemento se refiere. Para ello se pone siempre dentro de una estructura ``complexType``.
 
 Elemento ``simpleType``
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-Un tipo simple sirve para definir una serie de restricciones a un
-elemento o a un atributo. Es muy útil para definir rangos, tipos
-enumerados, etc.
+Un tipo simple sirve para definir una serie de restricciones a un elemento o a un atributo. Es muy útil para definir rangos, tipos enumerados, etc.
 
 .. code-block:: xml
 
@@ -662,19 +612,16 @@ Se utiliza para poner rangos, patrones enumerar posibles valores, etc.
      <xs:nombre_restriccion value=""/>
    </xs:restriction>
 
-Tiene el atributo ``base``. Es el tipo predefinido de datos sobre el que
-se construye la restricción.
+Tiene el atributo ``base``. Es el tipo predefinido de datos sobre el que se construye la restricción.
 
 Puede contener las siguientes restricciones:
 
 ``enumeration``
    Se ponen los valores que puede tomar el elemento.
 ``maxExclusive``, ``minExclusive``
-   Valores mínimos o máximos que puede tomar el elemento, sin incluir el
-   último valor.
+   Valores mínimos o máximos que puede tomar el elemento, sin incluir el último valor.
 ``maxInclusive``, ``minInclusive``
-   Valores mínimos o máximos que puede tomar el elemento, incluyendo el
-   último valor.
+   Valores mínimos o máximos que puede tomar el elemento, incluyendo el último valor.
 ``pattern``
    Expresión regular que expresa la restricción.
 
@@ -682,15 +629,13 @@ Puede contener las siguientes restricciones:
 
       <xs:pattern value="([a-zA-Z0-9])*"/>
 
-   En este caso decimos que el patrón es de longitud indefinida, y que
-   puede contener letras mayúsculas, minúsculas y números.
+   En este caso decimos que el patrón es de longitud indefinida, y que puede contener letras mayúsculas, minúsculas y números.
 
    .. code-block:: xml
 
       <xs:pattern value="\d{2}-\d{4}"/>
 
-   En este caso decimos que el patrón es de dos dígitos seguido de un
-   guión y otros 4 dígitos. Por ejemplo, 25-6789.
+   En este caso decimos que el patrón es de dos dígitos seguido de un guión y otros 4 dígitos. Por ejemplo, 25-6789.
 ``length``, ``maxLength``, ``minLength``
    Longitud de un elemento de tipo texto.
 ``totalDigits``
@@ -727,8 +672,9 @@ También en este caso hay dos posibles estructuras:
         </xs:restriction>
       </xs:simpleType>
 
-   La mejor opción es la segunda porque permite reutilizar ese tipo para
-   otros elementos. Además los parsers toleran mejor esta estructura.
+.. note::
+
+   La mejor opción es la segunda porque permite reutilizar ese tipo para otros elementos. Además los parsers toleran mejor esta estructura.
 
 Ejemplos de restricciones
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -767,20 +713,9 @@ Ejemplos de restricciones
 Convertir DTDs en esquemas XML
 ------------------------------
 
-En un principio, con la creación de XML, se empezó empleando las DTDs
-como modo de especificación de modelos; la existencia de más
-herramientas para ello hizo que gran parte de las empresas que empezaron
-a trabajar con XML adoptasen el uso de las DTDs. Actualmente el uso de
-estas ha quedado más restringido en su uso, y se está empezando a
-desarrollar de acuerdo al estándar de XML Schema; por ello, a
-continuación, presentaremos las transformaciones que deberían realizarse
-para convertir una DTD en un Schema.
+En un principio, con la creación de XML, se empezó empleando las DTDs como modo de especificación de modelos; la existencia de más herramientas para ello hizo que gran parte de las empresas que empezaron a trabajar con XML adoptasen el uso de las DTDs. Actualmente el uso de estas ha quedado más restringido en su uso, y se está empezando a desarrollar de acuerdo al estándar de XML Schema; por ello, a continuación, presentaremos las transformaciones que deberían realizarse para convertir una DTD en un Schema.
 
-En principio mostraremos a que elemento de XML Schema corresponden que
-elementos de las DTDs, aunque existen herramientas de traducción
-(DTD2HTML en Perl, XMLSpy, …) entre estos dos lenguajes, la siguiente
-tabla intenta expresar como funciona con el fin de una mejor
-comprensión.
+En principio mostraremos a que elemento de XML Schema corresponden que elementos de las DTDs, aunque existen herramientas de traducción (DTD2HTML en Perl, XMLSpy, …) entre estos dos lenguajes, la siguiente tabla intenta expresar como funciona con el fin de una mejor comprensión.
 
 +--------------+---------------------+--------------------------------+
 | DTD          | Schema              | Comentarios                    |
@@ -802,7 +737,7 @@ comprensión.
 | ``EMPTY``    | Soportado           | Se elimina la existencia de    |
 |              |                     | elementos descendientes del    |
 |              |                     | actual, diferenciando de la    |
-|              |                     | presencia de un string vacio   |
+|              |                     | presencia de un string vacío   |
 |              |                     | en un elemento.                |
 +--------------+---------------------+--------------------------------+
 | Modelo de    |  ``<complexType>``  |                                |
@@ -845,30 +780,25 @@ comprensión.
 |              |                     | en declaraciones de marcas en  |
 |              |                     | el XML.                        |
 +--------------+---------------------+--------------------------------+
-|  ``ENTITY%Pa | No soportada        |                                |
+| ``ENTITY%Pa  | No soportada        |                                |
 | rameter``    |                     |                                |
 +--------------+---------------------+--------------------------------+
 
 Utilización del esquema
 -----------------------
 
-Para utilizar el esquema desde un documento XML, tenemos que tener en
-cuenta si está en nuestro sistema de ficheros local o es un esquema
-público.
+Para utilizar el esquema desde un documento XML, tenemos que tener en cuenta si está en nuestro sistema de ficheros local o es un esquema público.
 
 -  En caso de que el esquema esté en un sitio público:
 
-.. code-block:: xml
+   .. code-block:: xml
 
-   <nodo_raiz xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-     xsi:schemaLocation="http://www.miempresa.com/mi_esquema.xsd">
+      <nodo_raiz xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.miempresa.com/mi_esquema.xsd">
 
 -  En caso de que el esquema esté en local:
 
-.. code-block:: xml
+   .. code-block:: xml
 
-   <nodo_raiz xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-     xsi:noNamespaceSchemaLocation="mi_esquema.xsd">
-
-.. |image0| image:: /imagenes/40_esquemas_xml/personal_interno.png
-
+      <nodo_raiz xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="mi_esquema.xsd">

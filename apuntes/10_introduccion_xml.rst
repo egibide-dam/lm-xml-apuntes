@@ -47,7 +47,10 @@ Veamos primero un trozo de código HTML:
      </li>
    </ul>
 
-| |HTML interpretado por el navegador|
+.. figure:: /imagenes/10_introduccion_xml/01_ejemplo_html.png
+   :align: center
+
+   HTML interpretado por el navegador.
 
 HTML es un lenguaje de presentación. Define un conjunto de etiquetas y atributos válidos, una utilización válida de estos elementos y un significado visual para cada elemento del lenguaje.
 
@@ -74,14 +77,11 @@ Ahora veamos un trozo de código XML:
    </comedor>
 
 .. figure:: /imagenes/10_introduccion_xml/02_ejemplo_xml.png
-:alt: XML cargado en un navegador, sin hoja de estilos
+   :align: center
 
-   XML cargado en un navegador, sin hoja de estilos
+   XML cargado en un navegador, sin hoja de estilos.
 
-XML está orientado a los datos en sí mismos. No define las etiquetas ni
-cómo se utilizan, sólo define unas pocas reglas sintácticas para crear
-documentos. Por eso XML es un metalenguaje (un lenguaje para definir
-otros lenguajes).
+XML está orientado a los datos en sí mismos. No define las etiquetas ni cómo se utilizan, sólo define unas pocas reglas sintácticas para crear documentos. Por eso XML es un metalenguaje (un lenguaje para definir otros lenguajes).
 
 XML y HTML son complementarios.
 
@@ -89,15 +89,8 @@ Principales usos
 ----------------
 
 XML aplicado a los sitios web
-   Permite separar el contenido de la presentación y que los mismos
-   datos se puedan mostrar de varias formas distintas sin demasiado
-   esfuerzo.
+   Permite separar el contenido de la presentación y que los mismos datos se puedan mostrar de varias formas distintas sin demasiado esfuerzo.
 XML para la comunicación entre aplicaciones
-   Representación de los datos muy simple y fácil de transmitir por la
-   red.
+   Representación de los datos muy simple y fácil de transmitir por la red.
 Aplicaciones heredadas
-   Acceso a datos de aplicaciones que ya no están en uso o incompatibles
-   por diferencias entre versiones.
-
-.. |HTML interpretado por el navegador| image:: /imagenes/10_introduccion_xml/01_ejemplo_html.png
-
+   Acceso a datos de aplicaciones que ya no están en uso o incompatibles por diferencias entre versiones.
