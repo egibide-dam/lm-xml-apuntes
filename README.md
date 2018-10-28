@@ -1,6 +1,6 @@
 # Lenguajes de marcas
 
-![Resultado de compilación](https://readthedocs.org/projects/lm-xml-apuntes/badge/?version=latest)
+![Resultado de compilación](https://readthedocs.org/projects/lm-xml-apuntes/badge/)
 
 Apuntes de XML en formato Markdown.
 
