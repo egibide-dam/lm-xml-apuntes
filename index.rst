@@ -10,8 +10,8 @@ Apuntes de XML
    :maxdepth: 2
    :caption: Contenidos:
 
-   Introducción a XML <markdown/10_introduccion_xml.md>
-   Sintáxis de XML <markdown/20_sintaxis_xml.md>
-   DTDs <markdown/30_dtds.md>
-   Esquemas XML <markdown/40_esquemas_xml.md>
-   Parsers XML <markdown/50_parsers_xml.md>
+   Introducción a XML <apuntes/10_introduccion_xml.rst>
+   Sintáxis de XML <apuntes/20_sintaxis_xml.rst>
+   DTDs <apuntes/30_dtds.rst>
+   Esquemas XML <apuntes/40_esquemas_xml.rst>
+   Parsers XML <apuntes/50_parsers_xml.rst>
