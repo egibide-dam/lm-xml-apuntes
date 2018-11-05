@@ -1,2 +1,2 @@
-sphinx-markdown-tables
 sphinx_rtd_theme
+sphinx-copybutton
