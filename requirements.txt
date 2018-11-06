@@ -1,2 +1,2 @@
 sphinx_rtd_theme
-sphinx-copybutton
+-e git://github.com/choldgraf/sphinx-copybutton.git#egg=sphinx-copybutton
