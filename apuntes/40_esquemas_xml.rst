@@ -717,72 +717,71 @@ En un principio, con la creación de XML, se empezó empleando las DTDs como mod
 
 En principio mostraremos a que elemento de XML Schema corresponden que elementos de las DTDs, aunque existen herramientas de traducción (DTD2HTML en Perl, XMLSpy, …) entre estos dos lenguajes, la siguiente tabla intenta expresar como funciona con el fin de una mejor comprensión.
 
-+--------------+---------------------+--------------------------------+
-| DTD          | Schema              | Comentarios                    |
-+==============+=====================+================================+
-| ``ELEMENT``  | ``<element>``       | Crea un vínculo entre un       |
-|              |                     | nombre y unos atributos,       |
-|              |                     | modelos de contenido y         |
-|              |                     | anotaciones.                   |
-+--------------+---------------------+--------------------------------+
-|  ``#PCDATA`` |                     | Soportado como parte de un     |
-|              |                     | tipo simple                    |
-+--------------+---------------------+--------------------------------+
-|  ``ANY``     | ``<any>``           | Posee distintos comodines para |
-|              |                     | un mayor conjunto de           |
-|              |                     | posibilidades. Existe también  |
-|              |                     | ``<anyAttribute>`` con         |
-|              |                     | comodines similares.           |
-+--------------+---------------------+--------------------------------+
-| ``EMPTY``    | Soportado           | Se elimina la existencia de    |
-|              |                     | elementos descendientes del    |
-|              |                     | actual, diferenciando de la    |
-|              |                     | presencia de un string vacío   |
-|              |                     | en un elemento.                |
-+--------------+---------------------+--------------------------------+
-| Modelo de    |  ``<complexType>``  |                                |
-| contenido    |                     |                                |
-+--------------+---------------------+--------------------------------+
-| Conector de  | ``<sequence>``      |                                |
-| secuencia    |                     |                                |
-| (``,``)      |                     |                                |
-+--------------+---------------------+--------------------------------+
-| Conector de  | ``<choice>``        |                                |
-| alternativa  |                     |                                |
-| (``|``)      |                     |                                |
-+--------------+---------------------+--------------------------------+
-| Opcional     | Soportado           | Se han de emplear los          |
-| (``?``)      |                     | atributos predefinidos de      |
-|              |                     | ``maxOccurs`` y ``minOccurs``  |
-+--------------+---------------------+--------------------------------+
-| Requerido y  | Soportado           | Se han de emplear los          |
-| Repetible    |                     | atributos predefinidos de      |
-| (``+``)      |                     | ``maxOccurs`` y ``minOccurs``  |
-+--------------+---------------------+--------------------------------+
-| Opcional y   | Soportado           | Se han de emplear los          |
-| Repetible    |                     | atributos predefinidos de      |
-| (``*``)      |                     | ``maxOccurs`` y ``minOccurs``  |
-+--------------+---------------------+--------------------------------+
-| ``ATTLIST``  | ``<attributeGroup>``| Se pueden agrupar              |
-|              |                     | declaraciones de               |
-|              |                     | ``<attributes>``               |
-+--------------+---------------------+--------------------------------+
-| Tipo de      | Tipos               |                                |
-| atributo     | ``<simpleType>``    |                                |
-| ``CDATA``,   | predefinidos        |                                |
-| ``ID``,      |                     |                                |
-| ``IDREF``,   |                     |                                |
-| ``NOTATION`` |                     |                                |
-| ,            |                     |                                |
-| …            |                     |                                |
-+--------------+---------------------+--------------------------------+
-| ``ENTITY``   | No soportado        | Las entidades son declaradas   |
-|              |                     | en declaraciones de marcas en  |
-|              |                     | el XML.                        |
-+--------------+---------------------+--------------------------------+
-| ``ENTITY%Pa  | No soportada        |                                |
-| rameter``    |                     |                                |
-+--------------+---------------------+--------------------------------+
++----------------------+----------------------+--------------------------------+
+| DTD                  | Schema               | Comentarios                    |
++======================+======================+================================+
+| ``ELEMENT``          | ``<element>``        | Crea un vínculo entre un       |
+|                      |                      | nombre y unos atributos,       |
+|                      |                      | modelos de contenido y         |
+|                      |                      | anotaciones.                   |
++----------------------+----------------------+--------------------------------+
+| ``#PCDATA``          |                      | Soportado como parte de un     |
+|                      |                      | tipo simple                    |
++----------------------+----------------------+--------------------------------+
+| ``ANY``              | ``<any>``            | Posee distintos comodines para |
+|                      |                      | un mayor conjunto de           |
+|                      |                      | posibilidades. Existe también  |
+|                      |                      | ``<anyAttribute>`` con         |
+|                      |                      | comodines similares.           |
++----------------------+----------------------+--------------------------------+
+| ``EMPTY``            | Soportado            | Se elimina la existencia de    |
+|                      |                      | elementos descendientes del    |
+|                      |                      | actual, diferenciando de la    |
+|                      |                      | presencia de un string vacío   |
+|                      |                      | en un elemento.                |
++----------------------+----------------------+--------------------------------+
+| Modelo de            | ``<complexType>``    |                                |
+| contenido            |                      |                                |
++----------------------+----------------------+--------------------------------+
+| Conector de          | ``<sequence>``       |                                |
+| secuencia            |                      |                                |
+| (``,``)              |                      |                                |
++----------------------+----------------------+--------------------------------+
+| Conector de          | ``<choice>``         |                                |
+| alternativa          |                      |                                |
+| (``|``)              |                      |                                |
++----------------------+----------------------+--------------------------------+
+| Opcional             | Soportado            | Se han de emplear los          |
+| (``?``)              |                      | atributos predefinidos de      |
+|                      |                      | ``maxOccurs`` y ``minOccurs``  |
++----------------------+----------------------+--------------------------------+
+| Requerido y          | Soportado            | Se han de emplear los          |
+| Repetible            |                      | atributos predefinidos de      |
+| (``+``)              |                      | ``maxOccurs`` y ``minOccurs``  |
++----------------------+----------------------+--------------------------------+
+| Opcional y           | Soportado            | Se han de emplear los          |
+| Repetible            |                      | atributos predefinidos de      |
+| (``*``)              |                      | ``maxOccurs`` y ``minOccurs``  |
++----------------------+----------------------+--------------------------------+
+| ``ATTLIST``          | ``<attributeGroup>`` | Se pueden agrupar              |
+|                      |                      | declaraciones de               |
+|                      |                      | ``<attributes>``               |
++----------------------+----------------------+--------------------------------+
+| Tipo de              | Tipos                |                                |
+| atributo             | ``<simpleType>``     |                                |
+| ``CDATA``,           | predefinidos         |                                |
+| ``ID``,              |                      |                                |
+| ``IDREF``,           |                      |                                |
+| ``NOTATION``         |                      |                                |
+| ,                    |                      |                                |
+| …                    |                      |                                |
++----------------------+----------------------+--------------------------------+
+| ``ENTITY``           | No soportado         | Las entidades son declaradas   |
+|                      |                      | en declaraciones de marcas en  |
+|                      |                      | el XML.                        |
++----------------------+----------------------+--------------------------------+
+| ``ENTITY%Parameter`` | No soportada         |                                |
++----------------------+----------------------+--------------------------------+
 
 Utilización del esquema
 -----------------------
