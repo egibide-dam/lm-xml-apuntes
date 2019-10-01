@@ -710,6 +710,60 @@ Ejemplos de restricciones
      </xs:restriction>
    </xs:simpleType>
 
+Extender un tipo
+~~~~~~~~~~~~~~~~
+
+Utilizando ``xs:extension`` podemos ampliar un  ``simpleType`` o ``complexType``, añadiéndo elementos o atributos extra a un tipo base definido anteriormente.
+
+.. code-block:: xml
+
+   <xs:complexType name="tipo_persona">
+     <xs:sequence>
+       <xs:element name="nombre" type="xs:string"/>
+       <xs:element name="edad" type="xs:integer"/>
+     </xs:sequence>
+     <xs:attribute name="id" type="xs:integer"/>
+   </xs:complexType>
+
+   <xs:complexType name="tipo_contacto">
+     <xs:complexContent>
+       <xs:extension base="tipo_persona">
+         <xs:sequence>
+           <xs:element name="email" type="xs:string"/>
+           <xs:element name="telefono" type="xs:string"/>
+         </xs:sequence>
+       </xs:extension>
+     </xs:complexContent>
+   </xs:complexType>
+
+Elemento ``simpleContent``
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Se usa para definir un elemento que solo pueda contener texto y atributos, no subelementos.
+
+.. code-block:: xml
+
+   <xs:complexType name="tipo_documento">
+     <xs:simpleContent>
+       <xs:extension base="xs:string">
+         <xs:attribute name="plantilla" type="xs:string" use="required"/>
+         <xs:attribute name="revisado" type="xs:boolean" default="false"/>
+       </xs:extension>
+     </xs:simpleContent>
+   </xs:complexType>
+
+Elementos vacíos
+~~~~~~~~~~~~~~~~
+
+Para definir un elemento vacío, que no pueda tener ni texto ni subelementos, basta con no poner ningún subelemento en la declaración del tipo:
+
+.. code-block:: xml
+
+   <xs:complexType name="tipo_evento">
+     <xs:attribute name="nombre" type="xs:string" use="required"/>
+     <xs:attribute name="activo" type="xs:boolean" default="false"/>
+   </xs:complexType>
+
 Convertir DTDs en esquemas XML
 ------------------------------
 
