@@ -713,7 +713,7 @@ Ejemplos de restricciones
 Extender un tipo
 ~~~~~~~~~~~~~~~~
 
-Utilizando ``xs:extension`` podemos ampliar un  ``simpleType`` o ``complexType``, añadiéndo elementos o atributos extra a un tipo base definido anteriormente.
+Utilizando ``xs:extension`` podemos ampliar un ``simpleType`` o ``complexType``, añadiendo elementos o atributos extra a un tipo base definido anteriormente.
 
 .. code-block:: xml
 
