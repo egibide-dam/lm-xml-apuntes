@@ -402,8 +402,8 @@ Derivados
 |                                    | ``nonNegativeInteger``.         |
 +------------------------------------+---------------------------------+
 
-Tipo complejo: complexType
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+Tipo complejo: ``complexType``
+------------------------------
 
 Sirve para definir elementos que tienen sub-elementos y/o atributos.
 
@@ -574,8 +574,8 @@ Puede contener los siguientes atributos:
 
 La localización del atributo no puede ir por sí solo, ya que con esta estructura no sabríamos a que elemento se refiere. Para ello se pone siempre dentro de una estructura ``complexType``.
 
-Elemento ``simpleType``
-~~~~~~~~~~~~~~~~~~~~~~~
+Tipo simple: ``simpleType``
+--------------------------
 
 Un tipo simple sirve para definir una serie de restricciones a un elemento o a un atributo. Es muy útil para definir rangos, tipos enumerados, etc.
 
@@ -733,7 +733,7 @@ Permite combinar varios tipos simples en uno solo:
    </xs:simpleType>
 
 Extender un tipo
-~~~~~~~~~~~~~~~~
+----------------
 
 Utilizando ``xs:extension`` podemos ampliar un ``simpleType`` o ``complexType``, añadiendo elementos o atributos extra a un tipo base definido anteriormente.
 
@@ -758,10 +758,10 @@ Utilizando ``xs:extension`` podemos ampliar un ``simpleType`` o ``complexType``,
      </xs:complexContent>
    </xs:complexType>
 
-Elemento ``simpleContent``
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+Elementos sin subelementos
+--------------------------
 
-Se usa para definir un elemento que solo pueda contener texto y atributos, no subelementos.
+Mediante ``simpleContent`` podemos definir un elemento que solo pueda contener texto y atributos, no subelementos.
 
 .. code-block:: xml
 
@@ -775,7 +775,7 @@ Se usa para definir un elemento que solo pueda contener texto y atributos, no su
    </xs:complexType>
 
 Elementos vacíos
-~~~~~~~~~~~~~~~~
+----------------
 
 Para definir un elemento vacío, que no pueda tener ni texto ni subelementos, basta con no poner ningún subelemento en la declaración del tipo:
 
