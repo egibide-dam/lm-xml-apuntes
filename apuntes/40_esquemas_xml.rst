@@ -710,6 +710,28 @@ Ejemplos de restricciones
      </xs:restriction>
    </xs:simpleType>
 
+Elemento ``list``
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+Permite definir un tipo simple compuesto por una lista de otros tipos simples separados siempre por espacios:
+
+.. code-block:: xml
+
+   <xs:simpleType name="lista_numeros">
+     <xs:list itemType="xs:integer"/>
+   </xs:simpleType>
+
+Elemento ``union``
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+Permite combinar varios tipos simples en uno solo:
+
+.. code-block:: xml
+
+   <xs:simpleType name="entero_o_fecha">
+     <xs:union memberTypes="xs:integer xs:date"/>
+   </xs:simpleType>
+
 Extender un tipo
 ~~~~~~~~~~~~~~~~
 
