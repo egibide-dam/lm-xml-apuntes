@@ -23,7 +23,7 @@ Se buscó entonces definir un subconjunto del SGML que permita:
 -  Empezar de cero y hacer hincapié en que no se acepte nunca un documento con errores de sintaxis.
 -  Para hacer esto XML deja de lado muchas características de SGML que estaban pensadas para facilitar la escritura manual de documentos. XML en cambio está orientado a hacer las cosas más sencillas para los programas automáticos que necesiten interpretar el documento.
 
-HTML vs. XML
+HTML vs. XML
 ------------
 
 Veamos primero un trozo de código HTML:
@@ -52,7 +52,7 @@ Veamos primero un trozo de código HTML:
 
    HTML interpretado por el navegador.
 
-HTML es un lenguaje de presentación. Define un conjunto de etiquetas y atributos válidos, una utilización válida de estos elementos y un significado visual para cada elemento del lenguaje.
+HTML es un lenguaje de presentación. Define un conjunto de etiquetas y atributos válidos, una utilización válida de estos elementos y un significado visual para cada elemento del lenguaje.
 
 Ahora veamos un trozo de código XML:
 
@@ -79,11 +79,11 @@ Ahora veamos un trozo de código XML:
 .. figure:: /imagenes/10_introduccion_xml/02_ejemplo_xml.png
    :align: center
 
-   XML cargado en un navegador, sin hoja de estilos.
+   XML cargado en un navegador, sin hoja de estilos.
 
-XML está orientado a los datos en sí mismos. No define las etiquetas ni cómo se utilizan, sólo define unas pocas reglas sintácticas para crear documentos. Por eso XML es un metalenguaje (un lenguaje para definir otros lenguajes).
+XML está orientado a los datos en sí mismos. No define las etiquetas ni cómo se utilizan, sólo define unas pocas reglas sintácticas para crear documentos. Por eso XML es un metalenguaje (un lenguaje para definir otros lenguajes).
 
-XML y HTML son complementarios.
+XML y HTML son complementarios.
 
 Principales usos
 ----------------

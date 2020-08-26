@@ -46,13 +46,13 @@ Existen básicamente 2 modos:
 -  Derivar desde el axioma de la gramática correspondiente al lenguaje una a una todas las cadenas del lenguaje hasta que alguna coincida con la que se estudia o bien no se puedan generar más cadenas y ninguna coincida (esto se puede refinar, no obstante, no se aconseja este método, al menos sin refinar).
 -  Partir de la cadena e intentar hacer el camino inverso (llegar al axioma) para comprobar si puede ser generada por la gramática partiendo del axioma.
 
-Veamos estas técnicas con un ejemplo. Supongamos el lenguaje de cadenas que contienen un número impar de aes: 
+Veamos estas técnicas con un ejemplo. Supongamos el lenguaje de cadenas que contienen un número impar de aes:  
 
 .. code-block:: text
 
    L a_imp = {a, aaa, aaaaa, ...}
 
-Su gramática o conjunto de reglas es la que se muestra a continuación: 
+Su gramática o conjunto de reglas es la que se muestra a continuación:  
 
 .. code-block:: text
 

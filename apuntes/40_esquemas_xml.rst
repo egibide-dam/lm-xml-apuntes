@@ -28,9 +28,9 @@ Los esquemas mantienen la estructura y la sintaxis de los documentos XML por lo 
      ...
    </xs:schema>
 
-Fíjese en que hace referencia a una URL, esa dirección contiene la definición de todos los elementos y atributos que se pueden utilizar en un esquema. Eso no quiere decir que para programar en XML se necesite estar conectado a Internet. 
+Fíjese en que hace referencia a una URL, esa dirección contiene la definición de todos los elementos y atributos que se pueden utilizar en un esquema. Eso no quiere decir que para programar en XML se necesite estar conectado a Internet. 
 
-Utiliza un atributo ``xmlns`` que significa *XML namespace* para crear un espacio de nombres de XML vinculado a un prefijo que en este caso es ``xs``, pero que puede ser cualquier cosa ya que sólo hace la función de variable (también se usa ``xsd``). Sirve para que cada vez que se utilice un elemento o tipo de esa “librería” se le ponga ese prefijo, en el caso de que se utilizasen más referencias a otras URLs se distinguiría claramente los elementos de cada uno de ellos por medio de los prefijos.
+Utiliza un atributo ``xmlns`` que significa *XML namespace* para crear un espacio de nombres de XML vinculado a un prefijo que en este caso es ``xs``, pero que puede ser cualquier cosa ya que sólo hace la función de variable (también se usa ``xsd``). Sirve para que cada vez que se utilice un elemento o tipo de esa “librería” se le ponga ese prefijo, en el caso de que se utilizasen más referencias a otras URLs se distinguiría claramente los elementos de cada uno de ellos por medio de los prefijos.
 
 Utilizando este atributo ``xmlns``, crea un espacio de nombres para cada URL referenciada, así si hubiese dos elementos con el mismo nombre se diferencian claramente.
 
